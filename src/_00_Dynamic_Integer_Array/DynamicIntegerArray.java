@@ -24,8 +24,7 @@ public class DynamicIntegerArray {
 		// B. set the last element of your new array to
 		// the value passed into the method
 
-		int z = oneElementLarger.length - 1;
-		z = v;
+		oneElementLarger[oneElementLarger.length - 1] = v;
 
 		// C. iterate through the member array and
 		// copy every element from the member array
@@ -43,6 +42,7 @@ public class DynamicIntegerArray {
 	// 4. Complete the steps in the get method
 	public int get(int location) {
 		// A. Return the value of the member array at the location passed in
+
 		return integer[location];
 	}
 
@@ -52,6 +52,8 @@ public class DynamicIntegerArray {
 	public void set(int v, int location) {
 		// A. set the variable at the location passed in to the method
 		// to the new value v
+		integer[location] = v;
+
 	}
 
 	// 7. Complete the steps in the insert method
@@ -59,7 +61,30 @@ public class DynamicIntegerArray {
 		// A. create and initialize a new int array to be one
 		// element longer than the member array
 
+		int[] newIntArray = new int[integer.length + 1];
+
 		// B. Make a for loop that iterates through the new array
+
+		for (int i = 0; i < newIntArray.length; i++) {
+
+			if (i < location) {
+
+				newIntArray[i] = integer[i];
+
+			}
+
+			else if (i > location) {
+
+				newIntArray[i] = integer[i - 1];
+
+			}
+
+			else {
+				newIntArray[i] = v;
+			}
+
+			integer = newIntArray;
+		}
 
 		// C. if i is less than location:
 		// set the element at i of the new array to the element at i of the member array
@@ -80,7 +105,30 @@ public class DynamicIntegerArray {
 	public void remove(int location) {
 		// A. create a new array that is one element smaller than the member array
 
+		int[] newArrayAgain = new int[integer.length - 1];
+
 		// B. make a for loop to iterate through the member array
+
+		for (int i = 0; i < integer.length; i++) {
+
+			if (newArrayAgain[i] < location) {
+
+				newArrayAgain[1] = integer[1];
+
+			}
+
+			else if (i > location) {
+
+				newArrayAgain[i - 1] = integer[i];
+			}
+			
+			else {
+				continue;
+			}
+			
+			integer = newArrayAgain;
+
+		}
 
 		// C. if i is less than location
 		// set the element at i of the new array to the element at i of the member array
@@ -99,12 +147,15 @@ public class DynamicIntegerArray {
 	// 11. Complete the size method so that it returns the length of the member
 	// array.
 	public int size() {
-		return 0;
+		return integer.length;
 	}
 
 	// 12. Complete the clear array so that it sets the member array
 	// equal to a new integer array of size 0
 	public void clear() {
+		
+		int [] sizeZero = new int [0];
+		integer = sizeZero;
 	}
 
 	// 13. Run the test again to see if you are finished.
