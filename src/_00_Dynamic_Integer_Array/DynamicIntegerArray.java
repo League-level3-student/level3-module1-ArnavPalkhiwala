@@ -83,8 +83,9 @@ public class DynamicIntegerArray {
 				newIntArray[i] = v;
 			}
 
-			integer = newIntArray;
 		}
+
+		integer = newIntArray;
 
 		// C. if i is less than location:
 		// set the element at i of the new array to the element at i of the member array
@@ -111,9 +112,9 @@ public class DynamicIntegerArray {
 
 		for (int i = 0; i < integer.length; i++) {
 
-			if (newArrayAgain[i] < location) {
+			if (i < location) {
 
-				newArrayAgain[1] = integer[1];
+				newArrayAgain[i] = integer[i];
 
 			}
 
@@ -121,14 +122,14 @@ public class DynamicIntegerArray {
 
 				newArrayAgain[i - 1] = integer[i];
 			}
-			
+
 			else {
 				continue;
 			}
-			
-			integer = newArrayAgain;
 
 		}
+
+		integer = newArrayAgain;
 
 		// C. if i is less than location
 		// set the element at i of the new array to the element at i of the member array
@@ -153,8 +154,8 @@ public class DynamicIntegerArray {
 	// 12. Complete the clear array so that it sets the member array
 	// equal to a new integer array of size 0
 	public void clear() {
-		
-		int [] sizeZero = new int [0];
+
+		int[] sizeZero = new int[0];
 		integer = sizeZero;
 	}
 
