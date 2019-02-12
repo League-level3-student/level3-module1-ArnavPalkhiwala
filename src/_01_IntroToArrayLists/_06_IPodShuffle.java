@@ -10,7 +10,7 @@ public class _06_IPodShuffle {
 		
 		Song song =  new Song("demo.mp3");
 		// 1. Use the Song class the play the demo.mp3 file.
-		song.play();
+//		song.play();
 		/**
 		 * 2. Congratulations on completing the sound check! * Now we want to make an
 		 * iPod Shuffle that plays random music. * Create an ArrayList of Songs and a
