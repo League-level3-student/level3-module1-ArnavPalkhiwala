@@ -21,35 +21,53 @@ public class _02_TextUndoRedo implements KeyListener {
 	 * Choose a key to be the Undo key. Make it so that when that key is pressed,
 	 * the top Character is popped off the Stack and added back to the JLabel.
 	 * 
+	 * 
 	 */
+	JFrame frame = new JFrame();
+	JPanel panel = new JPanel();
+	JLabel label = new JLabel();
 
 	void method() {
-
-		JFrame frame = new JFrame();
-		JPanel panel = new JPanel();
 		frame.add(panel);
-		JLabel label = new JLabel();
-		frame.add(label);
+		panel.add(label);
 		frame.addKeyListener(this);
+		frame.setSize(1000, 10000);
+		frame.setVisible(true);
+
+	}
+
+	public static void main(String[] args) {
+
+		_02_TextUndoRedo tur = new _02_TextUndoRedo();
+		tur.method();
 
 	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
+
+		if (e.getKeyChar() == KeyEvent.VK_BACK_SPACE) {
+
+			String s = label.getText();
+			label.setText(s.substring(0, s.length() - 1));
+		}
+
+		else {
+			label.setText(label.getText() + e.getKeyChar() + "");
+		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
