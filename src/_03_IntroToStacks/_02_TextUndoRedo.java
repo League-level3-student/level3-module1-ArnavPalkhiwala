@@ -2,6 +2,7 @@ package _03_IntroToStacks;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Stack;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -26,6 +27,8 @@ public class _02_TextUndoRedo implements KeyListener {
 	JFrame frame = new JFrame();
 	JPanel panel = new JPanel();
 	JLabel label = new JLabel();
+
+	Stack<Character> deleted = new Stack<Character>();
 
 	void method() {
 		frame.add(panel);
@@ -57,11 +60,26 @@ public class _02_TextUndoRedo implements KeyListener {
 
 			String s = label.getText();
 			label.setText(s.substring(0, s.length() - 1));
+			deleted.push(s.charAt(s.length() - 1));
+		}
+
+		else if (e.getKeyChar() == KeyEvent.VK_COMMA) {
+
+			if (!deleted.isEmpty()) {
+
+				Character c = deleted.pop();
+				System.out.println(c);
+
+				label.setText(label.getText() + c);
+
+			}
+
 		}
 
 		else {
 			label.setText(label.getText() + e.getKeyChar() + "");
 		}
+
 	}
 
 	@Override
