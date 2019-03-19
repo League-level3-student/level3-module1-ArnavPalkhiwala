@@ -15,6 +15,8 @@ public class HangMan {
 	JPanel panel = new JPanel();
 	JLabel label = new JLabel();
 
+	int lives = 10;
+
 	void ask() {
 
 		String wordNumber = JOptionPane.showInputDialog("Please give a number from 1 to 266...");
@@ -44,22 +46,43 @@ public class HangMan {
 		frame.add(panel);
 		panel.add(label);
 		label.setText(blanks);
-		System.out.println(popped);
 		frame.setVisible(true);
 		frame.pack();
 
-		String s = JOptionPane.showInputDialog("Guess a letter");
-		for (int i = 0; i < popped.length(); i++) {
+		while (lives > 0) {
 
-			if ((popped.charAt(i) + "").equals(s)) {
+			boolean letterFound = false;
 
-				blanks = blanks.substring(0, i * 2) + s + blanks.substring(i * 2 + 1);
-				System.out.println(blanks);
+			String guess = JOptionPane.showInputDialog("Guess a letter");
+
+			for (int j = 0; j < popped.length(); j++) {
+
+				if ((popped.charAt(j) + "").equals(guess)) {
+
+					blanks = blanks.substring(0, j * 2) + guess + "" + blanks.substring(j * 2 + 2, blanks.length());
+					System.out.println(blanks);
+
+					letterFound = true;
+				}
 			}
 
-		}
-		label.setText(blanks);
+			if (letterFound == false) {
 
+				lives -= 1;
+				JOptionPane.showMessageDialog(null, "You lost a life... You now have " + lives + " lives");
+			}
+
+			// if (blanks == popped) {
+			//
+			//
+			// }
+
+			if (lives == 0) {
+				JOptionPane.showMessageDialog(null, "Game over...The words was " + popped);
+			}
+
+			label.setText(blanks);
+		}
 	}
 
 	public static void main(String[] args) {
