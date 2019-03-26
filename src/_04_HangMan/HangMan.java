@@ -37,8 +37,8 @@ public class HangMan {
 		}
 
 		String popped = randomStack.pop();
+//		System.out.println(popped);
 		String blanks = " ";
-
 		for (int i = 0; i < popped.length(); i++) {
 			blanks += "_ ";
 		}
@@ -59,9 +59,7 @@ public class HangMan {
 
 				if ((popped.charAt(j) + "").equals(guess)) {
 
-					blanks = blanks.substring(0, j * 2) + guess + "" + blanks.substring(j * 2 + 2, blanks.length());
-					System.out.println(blanks);
-
+					blanks = blanks.substring(0, j * 2) + guess + " " + blanks.substring(j * 2 + 2, blanks.length());
 					letterFound = true;
 				}
 			}
@@ -72,10 +70,26 @@ public class HangMan {
 				JOptionPane.showMessageDialog(null, "You lost a life... You now have " + lives + " lives");
 			}
 
-			// if (blanks == popped) {
-			//
-			//
-			// }
+			String newString = blanks.replace(" ", "");
+
+			if (newString.equals(popped)) {
+
+				if (randomStack.isEmpty() == false) {
+					JOptionPane.showMessageDialog(null, "Next word...");
+					popped = randomStack.pop();
+					System.out.println();
+					blanks = "";
+					for (int i = 0; i < popped.length(); i++) {
+						blanks += "_ ";
+					}
+				}
+
+				else {
+
+					frame.dispose();
+					JOptionPane.showMessageDialog(null, "Congrats! You finished all of you words!");
+				}
+			}
 
 			if (lives == 0) {
 				JOptionPane.showMessageDialog(null, "Game over...The words was " + popped);
