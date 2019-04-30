@@ -53,6 +53,7 @@ public class _02_LogSearch implements ActionListener {
 	JButton button1;
 	JButton button2;
 	JButton button3;
+	JButton button4;
 
 	void gui() {
 
@@ -65,9 +66,12 @@ public class _02_LogSearch implements ActionListener {
 		button2.addActionListener(this);
 		button3 = new JButton("View List");
 		button3.addActionListener(this);
+		button4 = new JButton("Remove Entry");
+		button4.addActionListener(this);
 		panel.add(button1);
 		panel.add(button2);
 		panel.add(button3);
+		panel.add(button4);
 		frame.setVisible(true);
 		frame.pack();
 
@@ -115,8 +119,18 @@ public class _02_LogSearch implements ActionListener {
 
 			}
 
-			JOptionPane.showMessageDialog(null, "ID: " + idNumber + " Name: " + name);
+			JOptionPane.showMessageDialog(null, "ID: " + " Name: " + output);
 
+		}
+
+		if (e.getSource() == button4) {
+
+			String remove = JOptionPane.showInputDialog("Enter an ID number");
+			if (remove.equals(newHashMap)) {
+
+				newHashMap.remove(remove, remove.valueOf(remove));
+
+			}
 		}
 
 	}
