@@ -112,14 +112,15 @@ public class _02_LogSearch implements ActionListener {
 		String output = "";
 
 		if (e.getSource() == button3) {
+			
 
 			for (Integer i : newHashMap.keySet()) {
 
-				output += newHashMap.get(i);
+//				output += "ID: " + newHashMap.get(newHashMap.values()) + " Name " + newHashMap.get(newHashMap.get(i) + "\n");
+				JOptionPane.showMessageDialog(null, newHashMap);
 
 			}
 
-			JOptionPane.showMessageDialog(null, "ID: " + " Name: " + output);
 
 		}
 
@@ -128,8 +129,12 @@ public class _02_LogSearch implements ActionListener {
 			String remove = JOptionPane.showInputDialog("Enter an ID number");
 			if (remove.equals(newHashMap)) {
 
-				newHashMap.remove(remove, remove.valueOf(remove));
+				newHashMap.remove(remove);
 
+			}
+			
+			else {
+				JOptionPane.showMessageDialog(null, "Sorry, this ID is not present");
 			}
 		}
 
